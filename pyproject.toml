@@ -16,7 +16,15 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "flask"
+    "pip",
+    "flask",
+    "pyjwt",
+    "pillow",
+    "pyjwt",
+    "pymongo",
+    "flask-pymongo",
+    "click",
+    "python-dotenv"
 ]
 
 [tool.hatch.metadata]
