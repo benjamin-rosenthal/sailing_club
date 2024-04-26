@@ -10,6 +10,11 @@ dependencies = [
     "flask>=3.0.3",
     "flask-jwt-extended>=4.6.0",
     "python-dotenv>=1.0.1",
+    "setuptools>=69.5.1",
+    "sqlacodegen-v2>=0.1.4",
+    "psycopg2>=2.9.9",
+    "sqlalchemy>=2.0.29",
+    "sqlmodel>=0.0.16",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

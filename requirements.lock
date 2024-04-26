@@ -8,6 +8,8 @@
 #   with-sources: false
 
 -e file:.
+annotated-types==0.6.0
+    # via pydantic
 blinker==1.7.0
     # via flask
 click==8.1.7
@@ -19,6 +21,10 @@ flask==3.0.3
     # via sailing-club
 flask-jwt-extended==4.6.0
     # via sailing-club
+greenlet==3.0.3
+    # via sqlalchemy
+inflect==7.2.1
+    # via sqlacodegen-v2
 itsdangerous==2.2.0
     # via flask
 jinja2==3.1.3
@@ -26,12 +32,38 @@ jinja2==3.1.3
 markupsafe==2.1.5
     # via jinja2
     # via werkzeug
+more-itertools==10.2.0
+    # via inflect
 pip==24.0
     # via sailing-club
+psycopg2==2.9.9
+    # via sailing-club
+pydantic==2.7.1
+    # via sqlmodel
+pydantic-core==2.18.2
+    # via pydantic
 pyjwt==2.8.0
     # via flask-jwt-extended
 python-dotenv==1.0.1
     # via sailing-club
+setuptools==69.5.1
+    # via sailing-club
+sqlacodegen-v2==0.1.4
+    # via sailing-club
+sqlalchemy==2.0.29
+    # via sailing-club
+    # via sqlacodegen-v2
+    # via sqlmodel
+sqlmodel==0.0.16
+    # via sailing-club
+typeguard==4.2.1
+    # via inflect
+typing-extensions==4.11.0
+    # via inflect
+    # via pydantic
+    # via pydantic-core
+    # via sqlalchemy
+    # via typeguard
 werkzeug==3.0.2
     # via flask
     # via flask-jwt-extended
