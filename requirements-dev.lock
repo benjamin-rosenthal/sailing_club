@@ -30,6 +30,8 @@ pip==24.0
     # via sailing-club
 pyjwt==2.8.0
     # via flask-jwt-extended
+python-dotenv==1.0.1
+    # via sailing-club
 werkzeug==3.0.2
     # via flask
     # via flask-jwt-extended
