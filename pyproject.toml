@@ -5,7 +5,11 @@ description = "Add your description here"
 authors = [
     { name = "benjamin-rosenthal", email = "brosen8690@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "pip>=24.0",
+    "flask>=3.0.3",
+    "flask-jwt-extended>=4.6.0",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
@@ -16,15 +20,6 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "pip",
-    "flask",
-    "pyjwt",
-    "pillow",
-    "pyjwt",
-    "pymongo",
-    "flask-pymongo",
-    "click",
-    "python-dotenv"
 ]
 
 [tool.hatch.metadata]
