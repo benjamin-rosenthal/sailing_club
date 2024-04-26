@@ -2,6 +2,11 @@ from flask import jsonify, request
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from app import app
 
+from sqlalchemy.orm import Session
+from sqlalchemy import engine, select
+
+from models.user import User
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
@@ -27,3 +32,24 @@ def protected():
     # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
+
+# Test endpoint to get all users
+@app.route("/users", methods=["GET"])
+def getUsers():
+    session = Session(engine)
+    stmt = select(User)
+    for user in session.scalar(stmt):
+        print(user)
+    return ""
+
+@app.route("/user", methods=["POST"])
+def addUser():
+    with Session(engine) as session:
+        spongebob = User(
+            email='test',
+            password='test'
+        )
+
+        session.add_all([spongebob])
+
+        session.commit()
