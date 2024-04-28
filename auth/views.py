@@ -1,15 +1,19 @@
+import os
 from flask import jsonify, request
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from app import app
-
-from sqlalchemy.orm import Session
-from sqlalchemy import engine, select
-
-from models.user import User
+from sqlalchemy import text, create_engine
+from dotenv import load_dotenv
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    
+
+    engine = create_engine(os.getenv("CONNECTION_STRING"), echo=True)
+
+    with engine.connect() as conn:
+     result = conn.execute(text("select 'hello world'"))
+     return("success")
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
@@ -26,30 +30,30 @@ def login():
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
-@app.route("/protected", methods=["GET"])
-@jwt_required()
-def protected():
-    # Access the identity of the current user with get_jwt_identity
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
+# @app.route("/protected", methods=["GET"])
+# @jwt_required()
+# def protected():
+#     # Access the identity of the current user with get_jwt_identity
+#     current_user = get_jwt_identity()
+#     return jsonify(logged_in_as=current_user), 200
 
-# Test endpoint to get all users
-@app.route("/users", methods=["GET"])
-def getUsers():
-    session = Session(engine)
-    stmt = select(User)
-    for user in session.scalar(stmt):
-        print(user)
-    return ""
+# # Test endpoint to get all users
+# @app.route("/users", methods=["GET"])
+# def getUsers():
+#     session = Session(engine)
+#     stmt = select(User)
+#     for user in session.scalar(stmt):
+#         print(user)
+#     return ""
 
-@app.route("/user", methods=["POST"])
-def addUser():
-    with Session(engine) as session:
-        spongebob = User(
-            email='test',
-            password='test'
-        )
+# @app.route("/user", methods=["POST"])
+# def addUser():
+#     with Session(engine) as session:
+#         spongebob = User(
+#             email='test',
+#             password='test'
+#         )
 
-        session.add_all([spongebob])
+#         session.add_all([spongebob])
 
-        session.commit()
+#         session.commit()
