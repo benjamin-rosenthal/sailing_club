@@ -1,16 +1,12 @@
-import os
 from flask import jsonify, request
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from app import app
-from sqlalchemy import text, create_engine
-from dotenv import load_dotenv
+from sqlalchemy import text
+from database import engine
 
 @app.route("/")
 def hello_world():
     
-
-    engine = create_engine(os.getenv("CONNECTION_STRING"), echo=True)
-
     with engine.connect() as conn:
      result = conn.execute(text("select 'hello world'"))
      return("success")
