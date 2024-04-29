@@ -20,5 +20,5 @@ from auth import views
 from config import Config
 app.config.from_object(Config) 
 db.init_app(app)
-from models.user import User
+from auth.models.user import User
 migrate = Migrate(app, db)
