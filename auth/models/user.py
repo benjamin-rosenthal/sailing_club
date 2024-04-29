@@ -1,6 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Text
 from sqlalchemy.orm import declarative_base
-from datetime import datetime
 from database import db
 
 Base = declarative_base()
