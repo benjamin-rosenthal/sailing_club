@@ -1,15 +1,15 @@
 from flask import jsonify, request
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from sailing_club.app import app
-from sqlalchemy import text
-from sailing_club.database import engine
+# from sqlalchemy import text
+# from sailing_club.app import engine
 
-@app.route("/")
-def hello_world():
+# @app.route("/")
+# def hello_world():
     
-    with engine.connect() as conn:
-     result = conn.execute(text("select 'hello world'"))
-     return("success")
+#     with engine.connect() as conn:
+#      result = conn.execute(text("select 'hello world'"))
+#      return("success")
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.

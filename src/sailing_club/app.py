@@ -4,9 +4,12 @@ from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 from flask import Flask
 from flask_migrate import Migrate
-from sailing_club.database import db
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+db.init_app(app)
 
 # JWT setup
 load_dotenv()
@@ -19,7 +22,6 @@ from sailing_club.auth import views
 # Database migrations
 from sailing_club.config import Config
 app.config.from_object(Config) 
-db.init_app(app)
 from sailing_club.auth.models.user import User
 from sailing_club.membership.models.membership import Membership
 from sailing_club.membership.models.membership_status import MembershipStatus
