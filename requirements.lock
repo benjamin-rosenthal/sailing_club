@@ -12,7 +12,7 @@ alembic==1.13.1
     # via flask-migrate
 annotated-types==0.6.0
     # via pydantic
-blinker==1.7.0
+blinker==1.8.1
     # via flask
 click==8.1.7
     # via flask
@@ -67,7 +67,7 @@ sqlalchemy==2.0.29
     # via sailing-club
     # via sqlacodegen-v2
     # via sqlmodel
-sqlmodel==0.0.16
+sqlmodel==0.0.18
     # via sailing-club
 typeguard==4.2.1
     # via inflect

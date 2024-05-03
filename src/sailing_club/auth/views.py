@@ -1,8 +1,8 @@
 from flask import jsonify, request
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-from app import app
+from src.sailing_club.app import app
 from sqlalchemy import text
-from database import engine
+from sailing_club.database import engine
 
 @app.route("/")
 def hello_world():

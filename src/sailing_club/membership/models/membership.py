@@ -1,7 +1,7 @@
 from sqlalchemy import ForeignKeyConstraint
 from sqlalchemy.orm import declarative_base
-from database import db
-from membership.models.membership_status import MembershipStatus
+from sailing_club.database import db
+from sailing_club.membership.models.membership_status import MembershipStatus
 
 Base = declarative_base()
 

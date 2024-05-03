@@ -4,7 +4,7 @@ from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 from flask import Flask
 from flask_migrate import Migrate
-from database import db
+from sailing_club.database import db
 
 app = Flask(__name__)
 
@@ -14,13 +14,13 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 jwt = JWTManager(app)
 
 # Views
-from auth import views
+from sailing_club.auth import views
 
 # Database migrations
-from config import Config
+from sailing_club.config import Config
 app.config.from_object(Config) 
 db.init_app(app)
-from auth.models.user import User
-from membership.models.membership import Membership
-from membership.models.membership_status import MembershipStatus
+from sailing_club.auth.models.user import User
+from sailing_club.membership.models.membership import Membership
+from sailing_club.membership.models.membership_status import MembershipStatus
 migrate = Migrate(app, db)

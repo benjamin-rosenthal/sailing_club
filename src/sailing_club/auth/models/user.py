@@ -1,5 +1,5 @@
 from sqlalchemy.orm import declarative_base
-from database import db
+from sailing_club.database import db
 
 Base = declarative_base()
 
