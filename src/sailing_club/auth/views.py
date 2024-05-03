@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-from src.sailing_club.app import app
+from sailing_club.app import app
 from sqlalchemy import text
 from sailing_club.database import engine
 
