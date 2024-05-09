@@ -1,6 +1,9 @@
-from flask import jsonify, request
+from flask import jsonify, request, render_template, Blueprint
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from sailing_club.app import app
+
+bp = Blueprint('auth', __name__, url_prefix='/auth')
+
 # from sqlalchemy import text
 # from sailing_club.app import engine
 
@@ -13,15 +16,18 @@ from sailing_club.app import app
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=('GET', 'POST'))
 def login():
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
-    if username != "test" or password != "test":
-        return jsonify({"msg": "Bad username or password"}), 401
+    if request.method == 'POST':
+        username = request.json.get("username", None)
+        password = request.json.get("password", None)
+        if username != "test" or password != "test":
+            return jsonify({"msg": "Bad username or password"}), 401
 
-    access_token = create_access_token(identity=username)
-    return jsonify(access_token=access_token)
+        access_token = create_access_token(identity=username)
+        return jsonify(access_token=access_token)
+    
+    return render_template('auth/login.html')
 
 
 # Protect a route with jwt_required, which will kick out requests
