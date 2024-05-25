@@ -21,7 +21,7 @@ from sailing_club import auth
 from sailing_club.auth import views
 from . import auth
 
-app.register_blueprint(auth.bp)
+app.register_blueprint(views.bp)
 
 # Database migrations
 from sailing_club.config import Config
